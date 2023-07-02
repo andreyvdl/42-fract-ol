@@ -6,7 +6,7 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 00:20:26 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/01 02:13:14 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/01 21:22:21 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ NAME=fractol
 FLAGS=-Wall -Wextra -Werror -g3
 MLX=-lmlx -lX11 -lXext
 LIB_FT=-L./libft -lft
-SRCS=
+SRCS=fractol.c errors.c name_is_wrong.c validate_and_start.c validator.c
 OBJS=${SRCS:.c=.o}
-HEADER=
+HEADER=fractol.h
 
 # COLORS ======================================================================
 RED=\033[31m
@@ -40,7 +40,7 @@ all: ${NAME}
 
 ${NAME}: libft/libft.a ${OBJS}
 	@printf "${BLUE}All objects created!${RESET}\n"
-	@cc ${FLAGS} -I. ${OBJS} -o $@ 
+	@cc ${FLAGS} -I. ${OBJS} -o $@ ${MLX} ${LIB_FT}
 	@printf "${GREEN}${NAME} created!${RESET}\n"
 	@exit 0
 
@@ -49,13 +49,15 @@ libft/libft.a:
 
 %.o: %.c
 	@printf "${YELLOW}Compiling: ${CYAN}${notdir $<}${RESET}\n"
-	@cc ${FLAGS} -I. -c $< -o $@
+	@cc ${FLAGS} -I. -c $< -o $@ ${MLX} ${LIB_FT}
 
 fclean: clean
+	@rm -rf libft/libft.a
 	@rm -fr ${NAME}
 	@printf "${RED}${NAME} removed!${RESET}\n"
 
 clean:
+	@make --no-print-directory clean -C libft
 	@${foreach file, ${OBJS}, \
 		if [ -f ${file} ]; then \
 			printf "${YELLOW}Removing object file: ${MAGENTA}${notdir ${file}}${RESET}\n"; \
