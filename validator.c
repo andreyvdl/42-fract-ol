@@ -1,13 +1,12 @@
 #include "fractol.h"
 
-void	validator(char *argv[])
+void	validator(t_s_fractal *fractal, char *argv[])
 {
-	t_e_name	name;
-
-	if (name_is_wrong(&name, *argv))
+	if (name_is_wrong(&(fractal->name), *argv))
 		wrong_arg(*argv);
 	++argv;
-	if (name == E_MANDELBROT)
+	if (fractal->name == E_MANDELBROT)
 		return ;
-	
+	else if (fractal->name == E_JULIA)
+		extract_julia(fractal, argv);
 }

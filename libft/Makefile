@@ -2,7 +2,7 @@
 
 LIBFT_SOURCES=${addprefix sources/Binary_Tree/, ft_btree_apply_infix.c ft_btree_apply_prefix.c ft_btree_apply_suffix.c ft_btree_create_node.c ft_btree_insert_data.c ft_btree_search_item.c} \
 	${addprefix sources/Booleans/, ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_islower.c ft_isprime.c ft_isprint.c ft_isupper.c} \
-	${addprefix sources/Converters/, ft_atoi.c ft_btoi.c ft_htoi.c ft_itoa.c ft_itob.c ft_itoh.c ft_itoo.c ft_otoi.c} \
+	${addprefix sources/Converters/, ft_atoi.c ft_btoi.c ft_htoi.c ft_itoa.c ft_itob.c ft_itoh.c ft_itoo.c ft_otoi.c ft_atof.c} \
 	${addprefix sources/Ft_Printf/, ft_printf.c ft_printf_fd.c ft_printf_hex_upper.c ft_printf_int_fd.c ft_printf_loop.c ft_printf_ptr_fd.c ft_printf_uint.c ft_printf_char.c ft_printf_hex_lower.c ft_printf_int.c ft_printf_ln.c ft_printf_ptr.c ft_printf_string.c} \
 	${addprefix sources/Get_Next_Line/, ft_gnl.c ft_gnl_utils.c} \
 	${addprefix sources/Linked_List/, ft_list_at.c ft_list_foreach_if.c ft_list_remove_if.c ft_lstadd_back.c ft_lstclear.c ft_lstiter.c ft_lstmap.c ft_lstnew.c ft_lstsize.c ft_list_find.c ft_list_push_strs.c ft_list_sort.c ft_lstadd_front.c ft_lstdelone.c ft_lstlast.c ft_lstmerge.c ft_lstreverse.c}\

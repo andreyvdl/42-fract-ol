@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:00:37 by adantas-          #+#    #+#             */
-/*   Updated: 2023/07/01 02:33:09 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/07/02 16:21:30 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,14 +104,6 @@ void		ft_list_foreach_if(
 uint32_t	ft_next_prime(int nb);
 uint32_t	ft_termial(uint32_t n);
 uint32_t	ft_factorial(uint32_t n);
-bool		ft_isalnum(int c);
-bool		ft_isalpha(int c);
-bool		ft_isascii(int c);
-bool		ft_isdigit(int c);
-bool		ft_islower(int c);
-bool		ft_isprint(int c);
-bool		ft_isupper(int c);
-bool		ft_isprime(int nb);
 size_t		ft_strlen(const char *s);
 size_t		ft_rand(size_t seed, size_t min, size_t max);
 size_t		ft_strspn(const char *s, const char *accept);
@@ -152,7 +144,16 @@ void		*ft_memmove(void *dst, const void *src, size_t n);
 
 /* ------------------------------ Comum return ------------------------------ */
 
+bool		ft_isalnum(int c);
+bool		ft_isalpha(int c);
+bool		ft_isascii(int c);
+bool		ft_isdigit(int c);
+bool		ft_islower(int c);
+bool		ft_isprint(int c);
+bool		ft_isupper(int c);
+bool		ft_isprime(int nb);
 double		ft_power(double number, int exponent);
+float		ft_atof(const char *fptr);
 int			ft_atoi(const char *nptr);
 int			ft_otoi(const char *octal);
 int			ft_btoi(const char *binary);

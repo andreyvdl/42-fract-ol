@@ -1,6 +1,8 @@
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
+// https://mathigon.org/course/fractals/introduction
+
 /* Include ================================================================== */
 # include "libft/includes/libft.h"
 # include <fcntl.h>
@@ -17,6 +19,7 @@
 
 /* Texts ==================================================================== */
 
+# define ERR_ARG_NULL "\e[1;31mArg %d is null\e[0m\n"
 # define ERR_MISSING "\e[1;31mMissing args\e[0m\n"
 # define ERR_MANY "\e[1;31mToo many args\e[0m\n"
 # define ERR_ARG "\e[1;31mWrong arg `%s`\e[0m\n"
@@ -24,7 +27,7 @@
 # define USAGE_STR "Usage: \e[1;32m./fractol\e[0m \e[1;3;4;31mfractal_name\
 \e[0m [\e[1;3;4;31mfractal_options\e[0m \e[1;3;4;31m...\e[0m]\n\n\
 fractol_name can be MANDELBROT | JULIA\n\
-if is JULIA, need to add 2 options between -2 and 2\n"
+if is JULIA, need to add 2 options between -2.0 and 2.0\n"
 
 /* Types ==================================================================== */
 
@@ -66,13 +69,17 @@ enum e_name {
 
 struct s_fractal {
 	t_e_name	name;
-	size_t		x;
-	size_t		y;
 	size_t		max_iter;
+	float		x_real;
+	float		x_imag;
+	float		y_real;
+	float		y_imag;
 };
 
 struct s_engine {
 	t_s_fractal	fractal;
+	size_t		win_x;
+	size_t		win_y;
 	int			bits_pixel;
 	int			img_line;
 	int			endian;
@@ -86,8 +93,10 @@ struct s_engine {
 
 bool	name_is_wrong(t_e_name *name, char *arg);
 
+void	extract_julia(t_s_fractal *fractal, char *argv[]);
+void	validator(t_s_fractal *fractal, char *argv[]);
 void	validate_and_start(char *argv[]);
-void	validator(char *argv[]);
+void	arg_is_null(uint8_t position);
 void	wrong_arg(char *arg);
 void	print_options(void);
 void	argc_too_big(void);

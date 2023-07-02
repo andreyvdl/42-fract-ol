@@ -2,7 +2,9 @@
 
 void	validate_and_start(char *argv[])
 {
-	validator(argv);
+	t_s_engine	engine;
+
+	validator(&(engine.fractal), argv);
 	//extract_args(argv);
 	//engine = init_mlx();
 	//set_up_fractal(engine);
