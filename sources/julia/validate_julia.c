@@ -1,4 +1,4 @@
-#include "fractol.h"
+#include "../../include/fractol.h"
 
 static void	julia_nbr_is_valid(char *arg)
 {
@@ -27,18 +27,20 @@ static void	julia_nbr_is_valid(char *arg)
 		wrong_arg(arg);
 }
 
-void	extract_julia(t_s_fractal *fractal, char *argv[])
+void	validate_julia(char *argv[])
 {
+	float	temp;
+
 	if (*argv == NIL)
 		arg_is_null(1);
 	julia_nbr_is_valid(*argv);
-	fractal->x_real = ft_atof(*argv++);
-	if (fractal->x_real > 2.0 || fractal->x_real < -2.0)
+	temp = ft_atof(*argv++);
+	if (temp > 2.0 || temp < -2.0)
 		wrong_arg(*(argv - 1));
 	if (*argv == NIL)
 		arg_is_null(2);
 	julia_nbr_is_valid(*argv);
-	fractal->x_imag = ft_atof(*argv);
-	if (fractal->x_imag > 2.0 || fractal->x_imag < -2.0)
+	temp = ft_atof(*argv);
+	if (temp > 2.0 || temp < -2.0)
 		wrong_arg(*argv);
 }

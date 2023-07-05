@@ -1,4 +1,4 @@
-#include "fractol.h"
+#include "../include/fractol.h"
 
 void	validator(t_s_fractal *fractal, char *argv[])
 {
@@ -8,5 +8,5 @@ void	validator(t_s_fractal *fractal, char *argv[])
 	if (fractal->name == E_MANDELBROT)
 		return ;
 	else if (fractal->name == E_JULIA)
-		extract_julia(fractal, argv);
+		validate_julia(argv);
 }

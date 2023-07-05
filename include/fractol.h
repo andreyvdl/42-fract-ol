@@ -14,15 +14,24 @@
 
 # define MANDELBROT_STR "MANDELBROT"
 # define JULIA_STR "JULIA"
+# define TITLE "adantas- fract'ol"
+
 # define HEIGHT 600
 # define WIDTH 800
 
+# define CODE_CONREF 111
+# define CODE_IIOCTL 25
+# define CODE_INVARG 22
+
 /* Texts ==================================================================== */
 
+# define ERR_X_SERVER "\e[1;31mX-Server conenction failed\e[0m\n"
 # define ERR_ARG_NULL "\e[1;31mArg %d is null\e[0m\n"
 # define ERR_MISSING "\e[1;31mMissing args\e[0m\n"
 # define ERR_MANY "\e[1;31mToo many args\e[0m\n"
 # define ERR_ARG "\e[1;31mWrong arg `%s`\e[0m\n"
+# define ERR_WIN "\e[1;31mWindow creation failed\e[0m\n"
+# define ERR_IMG "\e[1;31mImage creation failed\e[0m\n"
 
 # define USAGE_STR "Usage: \e[1;32m./fractol\e[0m \e[1;3;4;31mfractal_name\
 \e[0m [\e[1;3;4;31mfractal_options\e[0m \e[1;3;4;31m...\e[0m]\n\n\
@@ -80,12 +89,13 @@ struct s_engine {
 	t_s_fractal	fractal;
 	size_t		win_x;
 	size_t		win_y;
-	int			bits_pixel;
-	int			img_line;
-	int			endian;
+	char		*img_addr;
 	void		*img;
 	void		*mlx;
 	void		*win;
+	int			bits_pixel;
+	int			img_line;
+	int			endian;
 };
 
 
@@ -93,12 +103,13 @@ struct s_engine {
 
 bool	name_is_wrong(t_e_name *name, char *arg);
 
-void	extract_julia(t_s_fractal *fractal, char *argv[]);
 void	validator(t_s_fractal *fractal, char *argv[]);
 void	validate_and_start(char *argv[]);
 void	arg_is_null(uint8_t position);
+void	extract_julia(char *argv[]);
 void	wrong_arg(char *arg);
 void	print_options(void);
+void	x_server_fail(void);
 void	argc_too_big(void);
 
 #endif

@@ -1,4 +1,4 @@
-#include "fractol.h"
+#include "../include/fractol.h"
 
 /*
 TODO: julia set and mandelbrot set
@@ -20,5 +20,5 @@ int	main(int argc, char *argv[])
 		validate_and_start(argv + 1);
 	else
 		argc_too_big();
-	exit(0);
+	exit(EXIT_SUCCESS);
 }

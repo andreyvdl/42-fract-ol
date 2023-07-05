@@ -1,4 +1,4 @@
-#include "fractol.h"
+#include "../include/fractol.h"
 
 bool	name_is_wrong(t_e_name *name, char *arg)
 {
