@@ -13,5 +13,8 @@ void	init_mlx(t_s_engine *engine)
 		x_img_fail(engine->mlx, engine->win);
 	engine->img_addr = mlx_get_data_addr(engine->img, &(engine->bits_pixel),
 			&(engine->img_line), &(engine->endian));
-	mlx_do_key_autorepeaton(engine->mlx);
+	//mlx_do_key_autorepeaton(engine->mlx);
+	//mlx_expose_hook(engine->win, expose_hook, engine);
+	// mlx_key_hook(engine->win, key_hook, engine);
+	// mlx_mouse_hook(engine->win, mouse_hook, engine);
 }

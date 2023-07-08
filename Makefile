@@ -6,7 +6,7 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 00:20:26 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/04 23:34:35 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/08 01:57:57 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@ NAME=fractol
 FLAGS=-Wall -Wextra -Werror -g3
 MLX=-lmlx -lX11 -lXext
 LIB_FT=-L./libft -lft
-SRCS=${addprefix sources/, errors.c errors2.c fractol.c name_is_wrong.c validate_and_start.c validator.c} \
+SRCS=${addprefix sources/, draw.c errors.c errors2.c fractol.c name_is_wrong.c validate_and_start.c validator.c} \
 	${addprefix sources/julia/, validate_julia.c} \
-	${addprefix sources/mlx/, init_mlx.c}
+	${addprefix sources/mandelbrot/, mandelbrot.c} \
+	${addprefix sources/mlx/, init_mlx.c destroy.c}
 OBJS=${SRCS:.c=.o}
 HEADER=include/fractol.h
 

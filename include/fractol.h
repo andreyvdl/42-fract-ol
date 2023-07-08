@@ -4,7 +4,7 @@
 // https://mathigon.org/course/fractals/introduction
 
 /* Include ================================================================== */
-# include "libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
@@ -16,8 +16,8 @@
 # define JULIA_STR "JULIA"
 # define TITLE "adantas- fract'ol"
 
-# define HEIGHT 600
-# define WIDTH 800
+# define HEIGHT 200
+# define WIDTH 200
 
 # define CODE_CONREF 111
 # define CODE_IIOCTL 25
@@ -79,10 +79,12 @@ enum e_name {
 struct s_fractal {
 	t_e_name	name;
 	size_t		max_iter;
-	float		x_real;
-	float		x_imag;
-	float		y_real;
-	float		y_imag;
+	float		x_min;
+	float		x_max;
+	float		y_max;
+	float		y_min;
+	float		zoom;
+	uint32_t	color;
 };
 
 struct s_engine {
@@ -103,10 +105,18 @@ struct s_engine {
 
 bool	name_is_wrong(t_e_name *name, char *arg);
 
+void	draw_on_img(t_s_engine *engine, uint32_t color);
 void	validator(t_s_fractal *fractal, char *argv[]);
+void	mandelbrot_loop(t_s_engine *engine);
+void	x_img_fail(void *mlx, void *win);
 void	validate_and_start(char *argv[]);
+void	destroy_mlx(t_s_engine *engine);
+void	mandelbrot(t_s_engine *engine);
 void	arg_is_null(uint8_t position);
+void	init_mlx(t_s_engine *engine);
+void	validate_julia(char *argv[]);
 void	extract_julia(char *argv[]);
+void	x_win_fail(void *mlx);
 void	wrong_arg(char *arg);
 void	print_options(void);
 void	x_server_fail(void);
