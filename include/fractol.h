@@ -33,8 +33,8 @@ GBA 160×120
 PSVITA 960×544
 */
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 960
+# define HEIGHT 544
 
 # define CODE_CONREF 111
 # define CODE_IIOCTL 25
@@ -122,8 +122,8 @@ struct s_engine {
 
 bool	name_is_wrong(t_e_name *name, char *arg);
 
-void	draw_on_img(t_s_engine *engine, uint32_t color);
 void	validator(t_s_fractal *fractal, char *argv[]);
+void	draw_on_img(t_s_engine *engine, int color);
 void	mandelbrot_loop(t_s_engine *engine);
 void	x_img_fail(void *mlx, void *win);
 void	validate_and_start(char *argv[]);
