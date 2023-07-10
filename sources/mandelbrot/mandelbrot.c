@@ -21,7 +21,7 @@ static void	draw_mandelbrot_pixel(t_s_engine *engine, float real, float imag)
 	if (iter == engine->fractal.max_iter)
 		draw_on_img(engine, 0x000000);
 	else
-		draw_on_img(engine, engine->fractal.color * iter * z_imag * z_real);
+		draw_on_img(engine, engine->fractal.color * iter * 0xfedcba);
 }
 
 void	mandelbrot_loop(t_s_engine *engine)
@@ -30,22 +30,19 @@ void	mandelbrot_loop(t_s_engine *engine)
 	float	imag;
 
 	engine->win_y = 0;
-	while (engine->win_y <= HEIGHT)
+	while (engine->win_y < HEIGHT)
 	{
 		engine->win_x = 0;
-		while (engine->win_x <= WIDTH)
+		while (engine->win_x < WIDTH)
 		{
-			real = (engine->fractal.x_min + (engine->win_x
-						* engine->fractal.x_max - engine->fractal.x_min))
-				* engine->fractal.zoom / WIDTH;
-			imag = (engine->fractal.y_min + (engine->win_y
-						* engine->fractal.y_max - engine->fractal.y_min))
-				* engine->fractal.zoom / HEIGHT;
+			real = engine->fractal.x_min + engine->win_x * (engine->fractal.x_max - engine->fractal.x_min) / WIDTH;
+			imag = engine->fractal.y_min + engine->win_y * (engine->fractal.y_max - engine->fractal.y_min) / HEIGHT;
 			draw_mandelbrot_pixel(engine, real, imag);
 			++engine->win_x;
 		}
 		++engine->win_y;
 	}
+	mlx_put_image_to_window(engine->mlx, engine->win, engine->img, 0, 0);
 }
 
 void	mandelbrot(t_s_engine *engine)

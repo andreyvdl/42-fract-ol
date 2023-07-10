@@ -16,8 +16,25 @@
 # define JULIA_STR "JULIA"
 # define TITLE "adantas- fract'ol"
 
-# define HEIGHT 200
-# define WIDTH 200
+/*
+WiiU | Switch 1280×720 1280×800 1280×768
+3DS 400×240
+3DS | GameCube | PS1 | N64 | Wii 640×480
+Wii | N64 | GameCube 800×600
+SNES 372×240
+WiiU 1366×768
+PS1 | GameCube 640×240
+PSP 480×272
+PS1 368×240 512×240 368×480 256×240
+MegaDrive 320×224
+NES | SNES | PS1 | N64 | GameCube | DS | 3DS 320×240
+SNES 400×300
+GBA 160×120
+PSVITA 960×544
+*/
+
+# define WIDTH 1280
+# define HEIGHT 720
 
 # define CODE_CONREF 111
 # define CODE_IIOCTL 25

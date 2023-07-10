@@ -6,7 +6,7 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 00:20:26 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/08 01:57:57 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/10 15:01:01 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ libft/libft.a:
 
 %.o: %.c
 	@printf "${YELLOW}Compiling: ${CYAN}${notdir $<}${RESET}\n"
-	@cc ${FLAGS} -Iinclude -c $< -o $@ ${MLX} ${LIB_FT}
+	@cc ${FLAGS} -Iinclude -c $< -o $@
 
 fclean: clean
 	@rm -rf libft/libft.a
