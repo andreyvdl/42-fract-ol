@@ -1,6 +1,6 @@
 #include "../include/fractol.h"
 
-static void	set_up_fractal(t_s_engine *engine)
+void	set_up_fractal(t_s_engine *engine)
 {
 	if (engine->fractal.name == E_MANDELBROT)
 		mandelbrot(engine);
@@ -19,5 +19,5 @@ void	validate_and_start(char *argv[])
 	set_up_fractal(&engine);
 	mlx_loop(engine.mlx);
 	destroy_mlx(&engine);
-	exit(0);
+	exit(EXIT_SUCCESS);
 }

@@ -13,8 +13,8 @@ void	init_mlx(t_s_engine *engine)
 		x_img_fail(engine->mlx, engine->win);
 	engine->img_addr = mlx_get_data_addr(engine->img, &(engine->bits_pixel),
 			&(engine->img_line), &(engine->endian));
-	//mlx_do_key_autorepeaton(engine->mlx);
-	//mlx_expose_hook(engine->win, expose_hook, engine);
-	// mlx_key_hook(engine->win, key_hook, engine);
+	mlx_expose_hook(engine->win, &select_to_draw, engine);
+	mlx_hook(engine->win, KeyPress, KeyPressMask, &user_keyboard, engine);
 	// mlx_mouse_hook(engine->win, mouse_hook, engine);
+	engine->fractal.color = ft_rand(engine->fractal.max_iter, 32, 0xFFFFFF);
 }

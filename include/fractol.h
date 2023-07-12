@@ -9,6 +9,8 @@
 # include <stdio.h>
 # include <string.h>
 # include <mlx.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 
 /* Defines ================================================================== */
 
@@ -33,8 +35,8 @@ GBA 160×120
 PSVITA 960×544
 */
 
-# define WIDTH 960
-# define HEIGHT 544
+# define WIDTH 200
+# define HEIGHT 200
 
 # define CODE_CONREF 111
 # define CODE_IIOCTL 25
@@ -122,9 +124,13 @@ struct s_engine {
 
 bool	name_is_wrong(t_e_name *name, char *arg);
 
+int		user_keyboard(int keycode, t_s_engine *engine);
+int		select_to_draw(t_s_engine *engine);
+
 void	validator(t_s_fractal *fractal, char *argv[]);
 void	draw_on_img(t_s_engine *engine, int color);
 void	mandelbrot_loop(t_s_engine *engine);
+void	set_up_fractal(t_s_engine *engine);
 void	x_img_fail(void *mlx, void *win);
 void	validate_and_start(char *argv[]);
 void	destroy_mlx(t_s_engine *engine);

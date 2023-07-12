@@ -23,8 +23,8 @@ static void	draw_mandelbrot_pixel(t_s_engine *engine, float real, float imag)
 	else
 	{
 		++iter;
-		draw_on_img(engine, engine->fractal.color * iter);
-	}	
+		draw_on_img(engine, engine->fractal.color * iter );
+	}
 }
 
 void	mandelbrot_loop(t_s_engine *engine)
@@ -38,8 +38,10 @@ void	mandelbrot_loop(t_s_engine *engine)
 		engine->win_x = 0;
 		while (engine->win_x < WIDTH)
 		{
-			real = engine->fractal.x_min + engine->win_x * (engine->fractal.x_max - engine->fractal.x_min) / WIDTH;
-			imag = engine->fractal.y_min + engine->win_y * (engine->fractal.y_max - engine->fractal.y_min) / HEIGHT;
+			real = engine->fractal.x_min + engine->win_x \
+			* (engine->fractal.x_max - engine->fractal.x_min) / WIDTH;
+			imag = engine->fractal.y_min + engine->win_y \
+			* (engine->fractal.y_max - engine->fractal.y_min) / HEIGHT;
 			draw_mandelbrot_pixel(engine, real, imag);
 			++engine->win_x;
 		}
@@ -50,12 +52,10 @@ void	mandelbrot_loop(t_s_engine *engine)
 
 void	mandelbrot(t_s_engine *engine)
 {
-	engine->fractal.x_min = -2.0;
-	engine->fractal.y_max = 2.0;
-	engine->fractal.x_max = 2.0;
-	engine->fractal.y_min = -2.0;
-	engine->fractal.zoom = 1.00;
-	engine->fractal.max_iter = 21;
-	engine->fractal.color = ft_rand(engine->fractal.max_iter, 32, 0xFFFFFF);
+	engine->fractal.x_min = -2.00;
+	engine->fractal.y_max = 2.00;
+	engine->fractal.x_max = 2.00;
+	engine->fractal.y_min = -2.00;
+	engine->fractal.max_iter = 1000;
 	mandelbrot_loop(engine);
 }
