@@ -56,6 +56,5 @@ void	mandelbrot(t_s_engine *engine)
 	engine->fractal.y_max = 2.00;
 	engine->fractal.x_max = 2.00;
 	engine->fractal.y_min = -2.00;
-	engine->fractal.max_iter = 1000;
 	mandelbrot_loop(engine);
 }

@@ -35,8 +35,8 @@ GBA 160×120
 PSVITA 960×544
 */
 
-# define WIDTH 200
-# define HEIGHT 200
+# define WIDTH 800
+# define HEIGHT 600
 
 # define CODE_CONREF 111
 # define CODE_IIOCTL 25

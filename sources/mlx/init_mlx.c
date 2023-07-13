@@ -16,5 +16,6 @@ void	init_mlx(t_s_engine *engine)
 	mlx_expose_hook(engine->win, &select_to_draw, engine);
 	mlx_hook(engine->win, KeyPress, KeyPressMask, &user_keyboard, engine);
 	// mlx_mouse_hook(engine->win, mouse_hook, engine);
-	engine->fractal.color = ft_rand(engine->fractal.max_iter, 32, 0xFFFFFF);
+	engine->fractal.max_iter = 10;
+	engine->fractal.color = ft_rand(engine->fractal.max_iter, 10, 0xFFFFFF);
 }
