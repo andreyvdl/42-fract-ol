@@ -4,6 +4,7 @@
 // https://mathigon.org/course/fractals/introduction
 
 /* Include ================================================================== */
+
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
@@ -11,6 +12,7 @@
 # include <mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
+# include <math.h>
 
 /* Defines ================================================================== */
 
@@ -90,6 +92,19 @@ typedef struct s_engine		t_s_engine;
  */
 typedef enum e_name			t_e_name;
 
+/**
+ * @brief Enum for fractal color mode
+ * 
+ * @param E_COLOR equal to 0;
+ * @param E_GRADIENT equal to 1;
+ */
+typedef enum e_mode			t_e_mode;
+
+enum e_mode {
+	E_COLOR,
+	E_GRADIENT,
+};
+
 enum e_name {
 	E_MANDELBROT,
 	E_JULIA,
@@ -97,12 +112,12 @@ enum e_name {
 
 struct s_fractal {
 	t_e_name	name;
+	t_e_mode	mode;
 	size_t		max_iter;
-	float		x_min;
-	float		x_max;
-	float		y_max;
-	float		y_min;
-	float		zoom;
+	double		x_min;
+	double		x_max;
+	double		y_max;
+	double		y_min;
 	uint32_t	color;
 };
 
@@ -119,13 +134,14 @@ struct s_engine {
 	int			endian;
 };
 
-
 /* Functions ================================================================ */
 
 bool	name_is_wrong(t_e_name *name, char *arg);
 
+int		user_mouse(int button, int x, int y, t_s_engine *engine);
 int		user_keyboard(int keycode, t_s_engine *engine);
 int		select_to_draw(t_s_engine *engine);
+int		destroy_mlx(t_s_engine *engine);
 
 void	validator(t_s_fractal *fractal, char *argv[]);
 void	draw_on_img(t_s_engine *engine, int color);
@@ -133,7 +149,7 @@ void	mandelbrot_loop(t_s_engine *engine);
 void	set_up_fractal(t_s_engine *engine);
 void	x_img_fail(void *mlx, void *win);
 void	validate_and_start(char *argv[]);
-void	destroy_mlx(t_s_engine *engine);
+void	change_mode(t_s_engine *engine);
 void	mandelbrot(t_s_engine *engine);
 void	arg_is_null(uint8_t position);
 void	init_mlx(t_s_engine *engine);
@@ -144,5 +160,6 @@ void	wrong_arg(char *arg);
 void	print_options(void);
 void	x_server_fail(void);
 void	argc_too_big(void);
+void	print_help(void);
 
 #endif

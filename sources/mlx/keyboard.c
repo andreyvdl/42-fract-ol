@@ -2,24 +2,22 @@
 
 static void	change_color(t_s_engine *engine)
 {
-	write(STDERR_FILENO, "COR\n", 4);
-	engine->fractal.color = ft_rand(engine->fractal.max_iter, 32, 0xFFFFFF);
+	engine->fractal.color = ft_rand(engine->fractal.max_iter, 0, 0xFFFFFF);
 	mlx_clear_window(engine->mlx, engine->win);
 	select_to_draw(engine);
 }
 
 static void	change_iteration(int keycode, t_s_engine *engine)
 {
-	write(STDERR_FILENO, "ITE\n", 4);
 	if (keycode == 'q')
 	{
-		if (engine->fractal.max_iter > 0)
-			--(engine->fractal.max_iter);
+		if (engine->fractal.max_iter > 5)
+			engine->fractal.max_iter -= 5;
 	}
 	else if (keycode == 'e')
 	{
-		if (engine->fractal.max_iter < SIZE_MAX)
-			++(engine->fractal.max_iter);
+		if (engine->fractal.max_iter < SIZE_MAX - 5)
+			engine->fractal.max_iter += 5;
 	}
 	mlx_clear_window(engine->mlx, engine->win);
 	select_to_draw(engine);
@@ -27,9 +25,8 @@ static void	change_iteration(int keycode, t_s_engine *engine)
 
 static void	change_zoom(int keycode, t_s_engine *engine)
 {
-	float	x;
-	float	y;
-
+	double	x;
+	double	y;
 
 	x = (engine->fractal.x_max - engine->fractal.x_min);
 	y = (engine->fractal.y_max - engine->fractal.y_min);
@@ -53,8 +50,8 @@ static void	change_zoom(int keycode, t_s_engine *engine)
 
 static void	move_camera(int keycode, t_s_engine *engine)
 {
-	float	x;
-	float	y;
+	double	x;
+	double	y;
 
 	x = (engine->fractal.x_max - engine->fractal.x_min);
 	y = (engine->fractal.y_max - engine->fractal.y_min);
@@ -99,6 +96,10 @@ int	user_keyboard(int keycode, t_s_engine *engine)
 		change_iteration(keycode, engine);
 	else if (keycode == XK_comma || keycode == XK_period)
 		change_zoom(keycode, engine);
+	else if (keycode == 'm')
+		change_mode(engine);
+	else if (keycode == 'v')
+		print_help();
 	else if (keycode == XK_Escape)
 		mlx_loop_end(engine->mlx);
 	return (0);

@@ -1,5 +1,12 @@
 #include "../../include/fractol.h"
 
+static void	init_fractal_settings(t_s_engine *engine)
+{
+	engine->fractal.max_iter = 20;
+	engine->fractal.color = ft_rand(engine->fractal.max_iter, 0, 0xFFFFFF);
+	engine->fractal.mode = E_COLOR;
+}
+
 void	init_mlx(t_s_engine *engine)
 {
 	engine->mlx = mlx_init();
@@ -15,7 +22,7 @@ void	init_mlx(t_s_engine *engine)
 			&(engine->img_line), &(engine->endian));
 	mlx_expose_hook(engine->win, &select_to_draw, engine);
 	mlx_hook(engine->win, KeyPress, KeyPressMask, &user_keyboard, engine);
-	// mlx_mouse_hook(engine->win, mouse_hook, engine);
-	engine->fractal.max_iter = 10;
-	engine->fractal.color = ft_rand(engine->fractal.max_iter, 10, 0xFFFFFF);
+	mlx_hook(engine->win, DestroyNotify, NoEventMask, &destroy_mlx, engine);
+	mlx_mouse_hook(engine->win, &user_mouse, engine);
+	init_fractal_settings(engine);
 }

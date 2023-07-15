@@ -17,6 +17,7 @@ void	validate_and_start(char *argv[])
 	if (engine.fractal.name == E_JULIA)
 		(void)argv;//extract_args(argv);
 	set_up_fractal(&engine);
+	print_help();
 	mlx_loop(engine.mlx);
 	destroy_mlx(&engine);
 	exit(EXIT_SUCCESS);

@@ -6,19 +6,20 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 00:20:26 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/12 14:55:05 by adantas-         ###   ########.fr        #
+#    Updated: 2023/07/15 17:59:30 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS ========================================================================
 NAME=fractol
 FLAGS=-Wall -Wextra -Werror -g3
-MLX=-lmlx -lX11 -lXext
+#FLAGS+=-fsanitize=address
+MLX=-lmlx -lX11 -lXext -lm
 LIB_FT=-L./libft -lft
-SRCS=${addprefix sources/, draw.c errors.c errors2.c fractol.c name_is_wrong.c validate_and_start.c validator.c} \
+SRCS=${addprefix sources/, draw.c errors.c errors2.c fractol.c name_is_wrong.c validate_and_start.c validator.c print_help.c} \
 	${addprefix sources/julia/, validate_julia.c} \
 	${addprefix sources/mandelbrot/, mandelbrot.c} \
-	${addprefix sources/mlx/, init_mlx.c destroy.c keyboard.c}
+	${addprefix sources/mlx/, init_mlx.c destroy.c keyboard.c mouse.c keyboard2.c}
 OBJS=${SRCS:.c=.o}
 HEADER=include/fractol.h
 
