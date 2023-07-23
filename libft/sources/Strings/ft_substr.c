@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 23:02:58 by adantas-          #+#    #+#             */
-/*   Updated: 2023/06/23 23:17:35 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:38:21 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static char	*mini_sub_string(void)
 }
 
 static char	*fill_sub_string(char const *string, char *sub_string, \
-							__u_int start, size_t len)
+							uint32_t start, size_t len)
 {
 	size_t	index;
 
@@ -62,7 +62,7 @@ static char	*fill_sub_string(char const *string, char *sub_string, \
  * 			the previous conditions are truth than it copies the len of the
  * 			string from the start point; If allocation fails it returns NULL;
  */
-char	*ft_substr(char const *s, __u_int start, size_t len)
+char	*ft_substr(char const *s, uint32_t start, size_t len)
 {
 	char	*sub_string;
 	size_t	string_size;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_mlx.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/23 15:33:11 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/23 15:48:09 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/fractol.h"
 
 static void	init_fractal_settings(t_s_engine *engine)
@@ -22,7 +34,8 @@ void	init_mlx(t_s_engine *engine)
 			&(engine->img_line), &(engine->endian));
 	mlx_expose_hook(engine->win, &select_to_draw, engine);
 	mlx_hook(engine->win, KeyPress, KeyPressMask, &user_keyboard, engine);
-	mlx_hook(engine->win, DestroyNotify, NoEventMask, &destroy_mlx, engine);
+	mlx_hook(
+		engine->win, DestroyNotify, NoEventMask, &mlx_loop_end, engine->mlx);
 	mlx_mouse_hook(engine->win, &user_mouse, engine);
 	init_fractal_settings(engine);
 }

@@ -6,13 +6,13 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 18:47:48 by adantas-          #+#    #+#             */
-/*   Updated: 2023/06/23 23:17:35 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:38:21 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/libft.h"
 
-int	print_unsigned_int(__u_int number)
+int	print_unsigned_int(uint32_t number)
 {
 	int		bytes_printed;
 	char	byte;
@@ -25,7 +25,7 @@ int	print_unsigned_int(__u_int number)
 	return (bytes_printed);
 }
 
-int	print_unsigned_int_fd(int file_descriptor, __u_int number)
+int	print_unsigned_int_fd(int file_descriptor, uint32_t number)
 {
 	int		bytes_printed;
 	char	byte;

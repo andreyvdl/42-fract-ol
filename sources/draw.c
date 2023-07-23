@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   draw.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/23 15:32:29 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/23 15:32:31 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fractol.h"
 
 int	select_to_draw(t_s_engine *engine)
@@ -10,6 +22,8 @@ int	select_to_draw(t_s_engine *engine)
 		ship_loop(engine);
 	else if (engine->fractal.name == E_TRICORN)
 		tricorn_loop(engine);
+	else if (engine->fractal.name == E_HYDRA)
+		hydra_loop(engine);
 	return (0);
 }
 

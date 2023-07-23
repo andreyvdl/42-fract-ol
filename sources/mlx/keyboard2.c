@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   keyboard2.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/23 15:32:56 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/23 15:34:51 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/fractol.h"
 
 static void	change_mode(t_s_engine *engine)
@@ -26,7 +38,7 @@ static void	change_fractal(t_s_engine *engine)
 		engine->fractal.julia_cy = -0.0900;
 		++engine->fractal.name;
 	}
-	else if (engine->fractal.name == E_TRICORN)
+	else if (engine->fractal.name == E_HYDRA)
 		engine->fractal.name = E_MANDELBROT;
 	else
 		++engine->fractal.name;

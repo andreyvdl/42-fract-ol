@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 15:00:37 by adantas-          #+#    #+#             */
-/*   Updated: 2023/07/02 16:21:30 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:36:49 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,8 @@ char		*ft_strjoin(char const *s1, char const *s2);
 char		*ft_strtrim(char const *s1, char const *set);
 char		*ft_strpbrk(const char *s, const char *accept);
 char		*ft_strstr(const char *str, const char *to_find);
-char		*ft_substr(char const *s, __u_int start, size_t len);
-char		*ft_strmapi(char const *s, char (*f)(__u_int, char));
+char		*ft_substr(char const *s, uint32_t start, size_t len);
+char		*ft_strmapi(char const *s, char (*f)(uint32_t, char));
 char		*ft_strnstr(const char *big, const char *little, size_t len);
 void		*ft_memset(void *s, int c, size_t n);
 void		*ft_calloc(size_t nmemb, size_t size);
@@ -179,7 +179,7 @@ void		ft_putchar_fd(char c, int fd);
 void		ft_free_matrix(void **matrix);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_swap(void **pointer1, void **pointer2);
-void		ft_striteri(char *s, void (*f)(__u_int, char *));
+void		ft_striteri(char *s, void (*f)(uint32_t, char *));
 void		ft_search_replace_chr(char *str, char find, char put);
 void		ft_search_replace_str(char *str, char *find, char *put);
 

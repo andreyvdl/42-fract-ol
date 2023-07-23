@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tricorn.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/23 15:32:35 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/23 15:32:39 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/fractol.h"
 
 static void	gradient(t_s_engine *engine, double temp, int dark, int color)
@@ -13,6 +25,10 @@ static void	gradient(t_s_engine *engine, double temp, int dark, int color)
 	blue = (int)((dark & 255) + temp * ((color & 255) - (dark & 255)));
 	draw_on_img(engine, (red << 16) | (green << 8) | blue);
 }
+
+/*
+4Head: temp = z_real * z_real - z_imag * z_imag + real * real;
+*/
 
 static void	draw_tricorn_pixel(t_s_engine *engine, double real, double imag)
 {

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/23 15:33:25 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/23 15:33:29 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../include/fractol.h"
 
 static void	gradient(t_s_engine *engine, double temp, int dark, int color)
@@ -18,6 +30,7 @@ static void	gradient(t_s_engine *engine, double temp, int dark, int color)
 double butt: temp = z_real * z_real - z_imag * z_imag + real * real;
 hydra: temp = z_real * z_real - z_imag * z_imag - real * real;
 */
+
 static void	draw_mandelbrot_pixel(t_s_engine *engine, double real, double imag)
 {
 	double	z_real;

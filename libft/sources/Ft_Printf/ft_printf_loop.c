@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:47:23 by adantas-          #+#    #+#             */
-/*   Updated: 2023/06/23 23:17:35 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:38:21 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int				print_ptr_fd(int file_descriptor, size_t address);
 int				print_ptr(size_t address);
 int				print_string(char *string);
 int				print_string_fd(int file_descriptor, char *string);
-int				print_unsigned_int(__u_int number);
-int				print_unsigned_int_fd(int file_descriptor, __u_int number);
+int				print_unsigned_int(uint32_t number);
+int				print_unsigned_int_fd(int file_descriptor, uint32_t number);
 
 static int	print_argument(char byte, va_list arg_list)
 {
@@ -38,7 +38,7 @@ static int	print_argument(char byte, va_list arg_list)
 	else if (byte == 'i' || byte == 'd')
 		return (print_int(va_arg(arg_list, int)));
 	else if (byte == 'u')
-		return (print_unsigned_int(va_arg(arg_list, __u_int)));
+		return (print_unsigned_int(va_arg(arg_list, uint32_t)));
 	else if (byte == 'p')
 		return (print_ptr(va_arg(arg_list, size_t)));
 	else if (byte == 'x')
@@ -82,7 +82,7 @@ static int	print_argument_fd(int file_descriptor, char byte, va_list arg_list)
 		return (print_int_fd(file_descriptor, va_arg(arg_list, int)));
 	else if (byte == 'u')
 		return (print_unsigned_int_fd(file_descriptor, \
-										va_arg(arg_list, __u_int)));
+										va_arg(arg_list, uint32_t)));
 	else if (byte == 'p')
 		return (print_ptr_fd(file_descriptor, va_arg(arg_list, size_t)));
 	else if (byte == 'x')

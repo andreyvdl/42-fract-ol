@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   validate_and_start.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/23 15:31:33 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/23 15:31:36 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/fractol.h"
 
 void	set_up_fractal(t_s_engine *engine)
@@ -10,6 +22,8 @@ void	set_up_fractal(t_s_engine *engine)
 		burning_ship(engine);
 	else if (engine->fractal.name == E_TRICORN)
 		tricorn(engine);
+	else if (engine->fractal.name == E_HYDRA)
+		hydra(engine);
 }
 
 void	validate_and_start(char *argv[])

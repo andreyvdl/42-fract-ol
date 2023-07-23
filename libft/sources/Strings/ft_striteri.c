@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/15 14:56:17 by adantas-          #+#    #+#             */
-/*   Updated: 2023/06/23 23:17:35 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:38:21 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
  * @param s A pointer to the string to be iterated;
  * @param f A pointer to the function to be applied to each character;
  */
-void	ft_striteri(char *s, void (*f)(__u_int, char*))
+void	ft_striteri(char *s, void (*f)(uint32_t, char*))
 {
-	__u_int	index;
+	uint32_t	index;
 
 	if (s == NIL || f == NIL)
 		return ;

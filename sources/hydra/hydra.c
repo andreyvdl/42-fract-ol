@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   burning_ship.c                                     :+:      :+:    :+:   */
+/*   hydra.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/23 15:34:46 by adantas-          #+#    #+#             */
-/*   Updated: 2023/07/23 15:34:51 by adantas-         ###   ########.fr       */
+/*   Created: 2023/07/23 15:33:51 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/23 15:33:52 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,7 @@ static void	gradient(t_s_engine *engine, double temp, int dark, int color)
 	draw_on_img(engine, (red << 16) | (green << 8) | blue);
 }
 
-/*
-the horn: z_imag = fabs(2 * z_real * z_imag) + imag * imag;
-the bucket: temp = z_real * z_real - z_imag * z_imag + real * real;
-The double soundwave:
-	temp = z_real * z_real - z_imag * z_imag - real * real;
-	z_imag = fabs(2 * z_real * z_imag) + imag * imag;
-the explosion: temp = z_real * z_real - z_imag * z_imag - real * real;
-*/
-
-static void	draw_ship_pixel(t_s_engine *engine, double real, double imag)
+static void	draw_hydra_pixel(t_s_engine *engine, double real, double imag)
 {
 	double	z_real;
 	double	z_imag;
@@ -48,8 +39,8 @@ static void	draw_ship_pixel(t_s_engine *engine, double real, double imag)
 	while (++iter < engine->fractal.max_iter \
 	&& z_real * z_real + z_imag * z_imag <= 4)
 	{
-		temp = z_real * z_real - z_imag * z_imag + real;
-		z_imag = fabs(2 * z_real * z_imag) + imag;
+		temp = z_real * z_real - z_imag * z_imag - real * real;
+		z_imag = 2 * z_real * z_imag + imag;
 		z_real = temp;
 	}
 	if (iter == engine->fractal.max_iter)
@@ -63,7 +54,7 @@ static void	draw_ship_pixel(t_s_engine *engine, double real, double imag)
 	}
 }
 
-void	ship_loop(t_s_engine *engine)
+void	hydra_loop(t_s_engine *engine)
 {
 	double	real;
 	double	imag;
@@ -78,7 +69,7 @@ void	ship_loop(t_s_engine *engine)
 			* (engine->fractal.x_max - engine->fractal.x_min) / WIDTH;
 			imag = engine->fractal.y_min + engine->win_y \
 			* (engine->fractal.y_max - engine->fractal.y_min) / HEIGHT;
-			draw_ship_pixel(engine, real, imag);
+			draw_hydra_pixel(engine, real, imag);
 			++engine->win_x;
 		}
 		++engine->win_y;
@@ -86,11 +77,11 @@ void	ship_loop(t_s_engine *engine)
 	mlx_put_image_to_window(engine->mlx, engine->win, engine->img, 0, 0);
 }
 
-void	burning_ship(t_s_engine *engine)
+void	hydra(t_s_engine *engine)
 {
 	engine->fractal.x_min = -2.00;
 	engine->fractal.y_max = 2.00;
 	engine->fractal.x_max = 2.00;
 	engine->fractal.y_min = -2.00;
-	ship_loop(engine);
+	hydra_loop(engine);
 }

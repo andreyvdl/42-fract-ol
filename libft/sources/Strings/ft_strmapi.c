@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/25 09:53:42 by adantas-          #+#    #+#             */
-/*   Updated: 2023/06/23 23:17:35 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/07/23 15:39:01 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,10 @@ static size_t	get_string_size(char const *string)
  * @return The string created from the successive applications of f (char *);
  * 			NULL if allocation fails;
  */
-char	*ft_strmapi(char const *s, char (*f)(__u_int, char))
+char	*ft_strmapi(char const *s, char (*f)(uint32_t, char))
 {
-	char			*new_string;
-	__u_int	index;
+	char		*new_string;
+	uint32_t	index;
 
 	if (s == NIL || f == NIL)
 		return (NIL);

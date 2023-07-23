@@ -1,15 +1,16 @@
-#include "../include/fractol.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/23 15:32:21 by adantas-          #+#    #+#             */
+/*   Updated: 2023/07/23 15:32:26 by adantas-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-TODO: julia set and mandelbrot set
-TODO: mouse zoom
-TODO: different paramenters
-	* they can be used as render options
-	* if no parameter is passed then print options
-TODO: colors for depth
-TODO: workspace shit
-TODO: ESC and the window X must exit
-*/
+#include "../include/fractol.h"
 
 int	main(int argc, char *argv[])
 {
