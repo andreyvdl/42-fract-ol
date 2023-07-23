@@ -2,7 +2,7 @@
 
 static void	init_fractal_settings(t_s_engine *engine)
 {
-	engine->fractal.max_iter = 20;
+	engine->fractal.max_iter = 100;
 	engine->fractal.color = ft_rand(engine->fractal.max_iter, 0, 0xFFFFFF);
 	engine->fractal.mode = E_COLOR;
 }

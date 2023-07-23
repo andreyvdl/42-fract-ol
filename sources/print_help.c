@@ -7,7 +7,8 @@ void	print_help(void)
 	ft_putendl("< > | Mouse Scroll: change zoom");
 	ft_putendl("C: change color");
 	ft_putendl("M: change mode");
+	ft_putendl("F: change fractal");
 	ft_putendl("R: reset");
 	ft_putendl("ESC: exit");
-	ft_putendl("V: print this help");
+	ft_putendl("V: print this help\n");
 }

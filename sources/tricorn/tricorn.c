@@ -14,11 +14,7 @@ static void	gradient(t_s_engine *engine, double temp, int dark, int color)
 	draw_on_img(engine, (red << 16) | (green << 8) | blue);
 }
 
-/*
-double butt: temp = z_real * z_real - z_imag * z_imag + real * real;
-hydra: temp = z_real * z_real - z_imag * z_imag - real * real;
-*/
-static void	draw_mandelbrot_pixel(t_s_engine *engine, double real, double imag)
+static void	draw_tricorn_pixel(t_s_engine *engine, double real, double imag)
 {
 	double	z_real;
 	double	z_imag;
@@ -32,7 +28,7 @@ static void	draw_mandelbrot_pixel(t_s_engine *engine, double real, double imag)
 	&& z_real * z_real + z_imag * z_imag <= 4)
 	{
 		temp = z_real * z_real - z_imag * z_imag + real;
-		z_imag = 2 * z_real * z_imag + imag;
+		z_imag = -2 * z_real * z_imag + imag;
 		z_real = temp;
 	}
 	if (iter == engine->fractal.max_iter)
@@ -46,7 +42,7 @@ static void	draw_mandelbrot_pixel(t_s_engine *engine, double real, double imag)
 	}
 }
 
-void	mandelbrot_loop(t_s_engine *engine)
+void	tricorn_loop(t_s_engine *engine)
 {
 	double	real;
 	double	imag;
@@ -61,7 +57,7 @@ void	mandelbrot_loop(t_s_engine *engine)
 			* (engine->fractal.x_max - engine->fractal.x_min) / WIDTH;
 			imag = engine->fractal.y_min + engine->win_y \
 			* (engine->fractal.y_max - engine->fractal.y_min) / HEIGHT;
-			draw_mandelbrot_pixel(engine, real, imag);
+			draw_tricorn_pixel(engine, real, imag);
 			++engine->win_x;
 		}
 		++engine->win_y;
@@ -69,11 +65,11 @@ void	mandelbrot_loop(t_s_engine *engine)
 	mlx_put_image_to_window(engine->mlx, engine->win, engine->img, 0, 0);
 }
 
-void	mandelbrot(t_s_engine *engine)
+void	tricorn(t_s_engine *engine)
 {
 	engine->fractal.x_min = -2.00;
 	engine->fractal.y_max = 2.00;
 	engine->fractal.x_max = 2.00;
 	engine->fractal.y_min = -2.00;
-	mandelbrot_loop(engine);
+	tricorn_loop(engine);
 }

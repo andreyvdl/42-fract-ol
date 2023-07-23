@@ -27,9 +27,9 @@ static void	julia_nbr_is_valid(char *arg)
 		wrong_arg(arg);
 }
 
-void	validate_julia(char *argv[])
+void	validate_julia(t_s_fractal *fractal, char *argv[])
 {
-	float	temp;
+	double	temp;
 
 	if (*argv == NIL)
 		arg_is_null(1);
@@ -37,10 +37,12 @@ void	validate_julia(char *argv[])
 	temp = ft_atof(*argv++);
 	if (temp > 2.0 || temp < -2.0)
 		wrong_arg(*(argv - 1));
+	fractal->julia_cx = temp;
 	if (*argv == NIL)
 		arg_is_null(2);
 	julia_nbr_is_valid(*argv);
 	temp = ft_atof(*argv);
 	if (temp > 2.0 || temp < -2.0)
 		wrong_arg(*argv);
+	fractal->julia_cy = temp;
 }

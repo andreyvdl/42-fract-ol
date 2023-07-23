@@ -4,6 +4,12 @@ int	select_to_draw(t_s_engine *engine)
 {
 	if (engine->fractal.name == E_MANDELBROT)
 		mandelbrot_loop(engine);
+	else if (engine->fractal.name == E_JULIA)
+		julia_loop(engine);
+	else if (engine->fractal.name == E_BURNING_SHIP)
+		ship_loop(engine);
+	else if (engine->fractal.name == E_TRICORN)
+		tricorn_loop(engine);
 	return (0);
 }
 

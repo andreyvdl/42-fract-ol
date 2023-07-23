@@ -5,7 +5,11 @@ void	set_up_fractal(t_s_engine *engine)
 	if (engine->fractal.name == E_MANDELBROT)
 		mandelbrot(engine);
 	else if (engine->fractal.name == E_JULIA)
-		(void)engine;//julia(&(engine->fractal));
+		julia(engine);
+	else if (engine->fractal.name == E_BURNING_SHIP)
+		burning_ship(engine);
+	else if (engine->fractal.name == E_TRICORN)
+		tricorn(engine);
 }
 
 void	validate_and_start(char *argv[])
@@ -14,8 +18,6 @@ void	validate_and_start(char *argv[])
 
 	validator(&(engine.fractal), argv);
 	init_mlx(&engine);
-	if (engine.fractal.name == E_JULIA)
-		(void)argv;//extract_args(argv);
 	set_up_fractal(&engine);
 	print_help();
 	mlx_loop(engine.mlx);

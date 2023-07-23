@@ -8,5 +8,5 @@ void	validator(t_s_fractal *fractal, char *argv[])
 	if (fractal->name == E_MANDELBROT)
 		return ;
 	else if (fractal->name == E_JULIA)
-		validate_julia(argv);
+		validate_julia(fractal, argv);
 }

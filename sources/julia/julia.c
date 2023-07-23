@@ -14,31 +14,23 @@ static void	gradient(t_s_engine *engine, double temp, int dark, int color)
 	draw_on_img(engine, (red << 16) | (green << 8) | blue);
 }
 
-/*
-double butt: temp = z_real * z_real - z_imag * z_imag + real * real;
-hydra: temp = z_real * z_real - z_imag * z_imag - real * real;
-*/
-static void	draw_mandelbrot_pixel(t_s_engine *engine, double real, double imag)
+static void	draw_julia_pixel(t_s_engine *engine, double real, double imag)
 {
-	double	z_real;
-	double	z_imag;
 	double	temp;
 	size_t	iter;
 
-	z_real = 0;
-	z_imag = 0;
 	iter = -1;
 	while (++iter < engine->fractal.max_iter \
-	&& z_real * z_real + z_imag * z_imag <= 4)
+	&& real * real + imag * imag <= 4)
 	{
-		temp = z_real * z_real - z_imag * z_imag + real;
-		z_imag = 2 * z_real * z_imag + imag;
-		z_real = temp;
+		temp = real * real - imag * imag + engine->fractal.julia_cx;
+		imag = 2 * real * imag - engine->fractal.julia_cy;
+		real = temp;
 	}
 	if (iter == engine->fractal.max_iter)
 		draw_on_img(engine, 0);
 	else if (engine->fractal.mode == E_COLOR)
-		draw_on_img(engine, engine->fractal.color * iter);
+		draw_on_img(engine, engine->fractal.color * (iter + 1));
 	else
 	{
 		temp = (double)iter / engine->fractal.max_iter;
@@ -46,7 +38,7 @@ static void	draw_mandelbrot_pixel(t_s_engine *engine, double real, double imag)
 	}
 }
 
-void	mandelbrot_loop(t_s_engine *engine)
+void	julia_loop(t_s_engine *engine)
 {
 	double	real;
 	double	imag;
@@ -61,7 +53,7 @@ void	mandelbrot_loop(t_s_engine *engine)
 			* (engine->fractal.x_max - engine->fractal.x_min) / WIDTH;
 			imag = engine->fractal.y_min + engine->win_y \
 			* (engine->fractal.y_max - engine->fractal.y_min) / HEIGHT;
-			draw_mandelbrot_pixel(engine, real, imag);
+			draw_julia_pixel(engine, real, imag);
 			++engine->win_x;
 		}
 		++engine->win_y;
@@ -69,11 +61,11 @@ void	mandelbrot_loop(t_s_engine *engine)
 	mlx_put_image_to_window(engine->mlx, engine->win, engine->img, 0, 0);
 }
 
-void	mandelbrot(t_s_engine *engine)
+void	julia(t_s_engine *engine)
 {
 	engine->fractal.x_min = -2.00;
 	engine->fractal.y_max = 2.00;
 	engine->fractal.x_max = 2.00;
 	engine->fractal.y_min = -2.00;
-	mandelbrot_loop(engine);
+	julia_loop(engine);
 }

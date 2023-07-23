@@ -1,4 +1,4 @@
-#include "../include/fractol.h"
+#include "../../include/fractol.h"
 
 void	x_win_fail(void *mlx)
 {

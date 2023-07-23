@@ -96,11 +96,11 @@ int	user_keyboard(int keycode, t_s_engine *engine)
 		change_iteration(keycode, engine);
 	else if (keycode == XK_comma || keycode == XK_period)
 		change_zoom(keycode, engine);
-	else if (keycode == 'm')
-		change_mode(engine);
 	else if (keycode == 'v')
 		print_help();
 	else if (keycode == XK_Escape)
 		mlx_loop_end(engine->mlx);
+	else
+		look_more(keycode, engine);
 	return (0);
 }

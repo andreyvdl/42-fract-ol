@@ -1,4 +1,4 @@
-#include "../include/fractol.h"
+#include "../../include/fractol.h"
 
 void	print_options(void)
 {

@@ -16,27 +16,12 @@
 
 /* Defines ================================================================== */
 
+# define BURNING_SHIP_STR "BURNING SHIP"
 # define MANDELBROT_STR "MANDELBROT"
+# define TRICORN_STR "TRICORN"
 # define JULIA_STR "JULIA"
+
 # define TITLE "adantas- fract'ol"
-
-/*
-WiiU | Switch 1280×720 1280×800 1280×768
-3DS 400×240
-3DS | GameCube | PS1 | N64 | Wii 640×480
-Wii | N64 | GameCube 800×600
-SNES 372×240
-WiiU 1366×768
-PS1 | GameCube 640×240
-PSP 480×272
-PS1 368×240 512×240 368×480 256×240
-MegaDrive 320×224
-NES | SNES | PS1 | N64 | GameCube | DS | 3DS 320×240
-SNES 400×300
-GBA 160×120
-PSVITA 960×544
-*/
-
 # define WIDTH 800
 # define HEIGHT 600
 
@@ -62,55 +47,46 @@ if is JULIA, need to add 2 options between -2.0 and 2.0\n"
 /* Types ==================================================================== */
 
 /**
- * @brief Struct for the fractal
- * 
- * @param name enum of the fractal name
- * @param x the x position of the window
- * @param y the y position of the window
- * @param max_iter the max iteration for the fractal
- */
-typedef struct s_fractal	t_s_fractal;
-
-/**
- * @brief Struct for the mlx
- * 
- * @param fractal the fractal struct
- * @param bits_pixel the bits per pixel of the image
- * @param img_line the size of one line of the image
- * @param endian the most important bit of the image
- * @param img the image
- * @param mlx the X-server pointer
- * @param win the window pointer
- */
-typedef struct s_engine		t_s_engine;
-
-/**
- * @brief Enum for the fractal name
- * 
- * @param E_MANDELBROT equal to 0
- * @param E_JULIA equal to 1
- */
-typedef enum e_name			t_e_name;
-
-/**
  * @brief Enum for fractal color mode
  * 
  * @param E_COLOR equal to 0;
  * @param E_GRADIENT equal to 1;
  */
-typedef enum e_mode			t_e_mode;
-
-enum e_mode {
+typedef enum e_mode {
 	E_COLOR,
 	E_GRADIENT,
-};
+}	t_e_mode;
 
-enum e_name {
+/**
+ * @brief Enum for the fractal name
+ * 
+ * @param E_MANDELBROT equal to 0;
+ * @param E_JULIA equal to 1;
+ * @param E_BURNING_SHIP equal to 2;
+ * @param E_TRICORN equal to 3;
+ */
+typedef enum e_name {
 	E_MANDELBROT,
 	E_JULIA,
-};
+	E_BURNING_SHIP,
+	E_TRICORN,
+}	t_e_name;
 
-struct s_fractal {
+/**
+ * @brief Struct for the fractal
+ * 
+ * @param name enum of the fractal name
+ * @param mode enum of the fractal color mode
+ * @param max_iter the max iteration for the fractal
+ * @param x_min the min x value of the fractal
+ * @param x_max the max x value of the fractal
+ * @param y_max the max y value of the fractal
+ * @param y_min the min y value of the fractal
+ * @param color the color of the fractal
+ * @param julia_cx the const x value of the julia fractal
+ * @param julia_cy the const y value of the julia fractal
+ */
+typedef struct s_fractal {
 	t_e_name	name;
 	t_e_mode	mode;
 	size_t		max_iter;
@@ -119,9 +95,25 @@ struct s_fractal {
 	double		y_max;
 	double		y_min;
 	uint32_t	color;
-};
+	double		julia_cx;
+	double		julia_cy;
+}	t_s_fractal;
 
-struct s_engine {
+/**
+ * @brief Struct for the mlx
+ * 
+ * @param fractal the fractal struct
+ * @param win_x the width of the window
+ * @param win_y the height of the window
+ * @param img_addr the address of the image
+ * @param img the image
+ * @param mlx the X-server pointer
+ * @param win the window pointer
+ * @param bits_pixel the bits per pixel of the image
+ * @param img_line the size of one line of the image
+ * @param endian the most important bit of the image
+ */
+typedef struct s_engine {
 	t_s_fractal	fractal;
 	size_t		win_x;
 	size_t		win_y;
@@ -132,7 +124,7 @@ struct s_engine {
 	int			bits_pixel;
 	int			img_line;
 	int			endian;
-};
+}	t_s_engine;
 
 /* Functions ================================================================ */
 
@@ -143,18 +135,24 @@ int		user_keyboard(int keycode, t_s_engine *engine);
 int		select_to_draw(t_s_engine *engine);
 int		destroy_mlx(t_s_engine *engine);
 
+void	validate_julia(t_s_fractal *fractal, char *argv[]);
 void	validator(t_s_fractal *fractal, char *argv[]);
 void	draw_on_img(t_s_engine *engine, int color);
+void	look_more(int keycode, t_s_engine *engine);
 void	mandelbrot_loop(t_s_engine *engine);
 void	set_up_fractal(t_s_engine *engine);
 void	x_img_fail(void *mlx, void *win);
+void	burning_ship(t_s_engine *engine);
+void	tricorn_loop(t_s_engine *engine);
 void	validate_and_start(char *argv[]);
-void	change_mode(t_s_engine *engine);
+void	julia_loop(t_s_engine *engine);
 void	mandelbrot(t_s_engine *engine);
 void	arg_is_null(uint8_t position);
+void	ship_loop(t_s_engine *engine);
 void	init_mlx(t_s_engine *engine);
-void	validate_julia(char *argv[]);
+void	tricorn(t_s_engine *engine);
 void	extract_julia(char *argv[]);
+void	julia(t_s_engine *engine);
 void	x_win_fail(void *mlx);
 void	wrong_arg(char *arg);
 void	print_options(void);
