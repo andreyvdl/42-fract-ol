@@ -6,14 +6,14 @@
 #    By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/01 00:20:26 by adantas-          #+#    #+#              #
-#    Updated: 2023/07/23 15:39:31 by adantas-         ###   ########.fr        #
+#    Updated: 2023/10/29 00:12:08 by adantas-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # VARS ========================================================================
 NAME=fractol
 FLAGS=-Wall -Wextra -Werror
-MLX=-lmlx -lX11 -lXext -lm
+MLX=-L./mlx -lmlx -lX11 -lXext -lm
 LIB_FT=-L./libft -lft
 SRCS=${addprefix sources/, draw.c fractol.c name_is_wrong.c validate_and_start.c validator.c print_help.c} \
 	${addprefix sources/burning_ship/, burning_ship.c} \
@@ -45,11 +45,13 @@ all: ${NAME}
 		printf "${GREEN}${NAME} is up to date!${RESET}\n"; \
 	fi
 
-${NAME}: libft/libft.a ${OBJS}
+${NAME}: mlx/libmlx.a libft/libft.a ${OBJS}
 	@printf "${BLUE}All objects created!${RESET}\n"
 	@cc ${FLAGS} -Iinclude ${OBJS} -o $@ ${MLX} ${LIB_FT}
 	@printf "${GREEN}${NAME} created!${RESET}\n"
-	@exit 0
+
+mlx/libmlx.a:
+	make -C mlx
 
 libft/libft.a:
 	@make --no-print-directory -C libft
@@ -60,11 +62,13 @@ libft/libft.a:
 
 fclean: clean
 	@rm -rf libft/libft.a
+	@rm -fr mlx/libmlx.a
 	@rm -fr ${NAME}
 	@printf "${RED}${NAME} removed!${RESET}\n"
 
 clean:
 	@make --no-print-directory clean -C libft
+	@make --no-print-directory clean -C mlx
 	@rm -fr ${OBJS}
 	@printf "${YELLOW}Objects removed!${RESET}\n"
 

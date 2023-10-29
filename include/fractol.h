@@ -6,7 +6,7 @@
 /*   By: adantas- <adantas-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/23 15:35:07 by adantas-          #+#    #+#             */
-/*   Updated: 2023/07/23 15:35:08 by adantas-         ###   ########.fr       */
+/*   Updated: 2023/10/29 00:03:48 by adantas-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@
 
 /* Include ================================================================== */
 
+# include "../mlx/mlx.h"
 # include "../libft/includes/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
-# include <mlx.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <math.h>
