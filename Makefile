@@ -12,7 +12,7 @@
 
 # VARS ========================================================================
 NAME=fractol
-FLAGS=-Wall -Wextra -Werror
+FLAGS=-Wall -Wextra -Werror -std=gnu11
 MLX=-L./mlx -lmlx -lX11 -lXext -lm
 LIB_FT=-L./libft -lft
 SRCS=${addprefix sources/, draw.c fractol.c name_is_wrong.c validate_and_start.c validator.c print_help.c} \

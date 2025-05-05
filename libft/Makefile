@@ -15,7 +15,7 @@ LIBFT_OBJECTS=${LIBFT_SOURCES:.c=.o}
 # VARIABLES ====================================================================
 
 NAME=libft.a
-CFLAGS=-Wall -Wextra -Werror
+CFLAGS=-Wall -Wextra -Werror -std=gnu11
 INCLUDES=-I./includes
 HEADER=./includes/libft.h
 
