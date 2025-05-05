@@ -20,3 +20,7 @@ make
 ```
 
 ### [42MLX](https://github.com/42Paris/minilibx-linux)
+
+## Demo
+
+[![demo](https://img.youtube.com/vi/-diB_MrVN3o/maxresdefault.jpg)](https://youtu.be/-diB_MrVN3o)
